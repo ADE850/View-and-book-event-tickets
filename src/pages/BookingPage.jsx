@@ -1,29 +1,30 @@
-import { useParams } from "react-router-dom";
-import { useState } from "react";
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 
-export default function BookingPage() {
-  const { id } = useParams();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+function BookingPage() {
+  const { eventId } = useParams();
+  const [formData, setFormData] = useState({ name: '', email: '', tickets: 1 });
+
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData); // пока просто выводим данные в консоль
+  };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h2>Бронирование фильма #{id}</h2>
-      <form onSubmit={(e) => { e.preventDefault(); alert("Бронь оформлена!"); }}>
-        <input
-          type="text"
-          placeholder="Ваше имя"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        /><br /><br />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        /><br /><br />
-        <button type="submit">Забронировать</button>
+    <div>
+      <h2>Book Event {eventId}</h2>
+      <form onSubmit={handleSubmit}>
+        <input name="name" placeholder="Name" onChange={handleChange} />
+        <input name="email" placeholder="Email" onChange={handleChange} />
+        <input name="tickets" type="number" min="1" onChange={handleChange} />
+        <button type="submit">Book Now</button>
       </form>
     </div>
   );
 }
+
+export default BookingPage;

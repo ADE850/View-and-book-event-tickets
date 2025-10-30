@@ -1,14 +1,20 @@
+import React from "react";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import EventsPage from "./pages/EventsPage";
-import BookingPage from "./pages/BookingPage";
+import Layout from "./components/Layout";
+import FilmsPage from "./components/FilmsPage";
+import MovieDetailsPage from "./components/MovieDetailsPage";
+import Add from "./components/Add";
+import NewsPage from "./pages/NewsPage"; // 🔹 добавили импорт
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/events" element={<EventsPage />} />
-      <Route path="/book/:id" element={<BookingPage />} />
-    </Routes>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<FilmsPage />} />
+        <Route path="/movie/:id" element={<MovieDetailsPage />} />
+        <Route path="/add" element={<Add />} />
+        <Route path="/news" element={<NewsPage />} /> {/* 🔹 новый путь */}
+      </Routes>
+    </Layout>
   );
 }

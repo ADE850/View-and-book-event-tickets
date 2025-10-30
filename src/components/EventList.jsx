@@ -1,23 +1,22 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-const events = [
-  { id: 1, name: "Avengers: Endgame", date: "2025-11-01" },
-  { id: 2, name: "Interstellar", date: "2025-11-05" },
-  { id: 3, name: "Inception", date: "2025-11-10" },
+const testEvents = [
+  { id: 1, title: "Movie 1", date: "2025-11-01" },
+  { id: 2, title: "Movie 2", date: "2025-11-05" },
 ];
 
-export default function EventList() {
+function EventList() {
   return (
     <div>
-      <h3>Upcoming Movies</h3>
-      <ul>
-        {events.map((event) => (
-          <li key={event.id}>
-            <strong>{event.name}</strong> — {event.date}{" "}
-            <Link to={`/booking/${event.id}`}>Book Ticket</Link>
-          </li>
-        ))}
-      </ul>
+      {testEvents.map(event => (
+        <div key={event.id}>
+          <h3>{event.title}</h3>
+          <p>{event.date}</p>
+          <Link to={`/booking/${event.id}`}>Book Ticket</Link>
+        </div>
+      ))}
     </div>
   );
 }
+
+export default EventList;
