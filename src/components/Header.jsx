@@ -26,7 +26,7 @@ export default function Header() {
         <div className="lang-switch">
           <button>RU</button> | <button>EN</button>
         </div>
-        <Link to="/login" className="login-btn">Войти</Link>
+        <Link to="/mybookings" className="login-btn">Ваши брони</Link>
       </div>
     </header>
   );

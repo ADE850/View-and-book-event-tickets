@@ -1,23 +1,30 @@
-import { Link } from "react-router-dom";
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
 
-const events = [
-  { id: 1, name: "Avengers: Endgame", date: "2025-11-01" },
-  { id: 2, name: "Interstellar", date: "2025-11-05" },
-  { id: 3, name: "Inception", date: "2025-11-10" },
-];
+function BookingPage() {
+  const { eventId } = useParams();
+  const [formData, setFormData] = useState({ name: '', email: '', tickets: 1 });
 
-export default function EventList() {
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value});
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData); // пока просто выводим данные в консоль
+  };
+
   return (
     <div>
-      <h3>Анонсы фильмов</h3>
-      <ul>
-        {events.map((event) => (
-          <li key={event.id}>
-            <strong>{event.name}</strong> — {event.date}{" "}
-            <Link to={`/movies/${event.id}`}>Подробнее</Link>
-          </li>
-        ))}
-      </ul>
+      <h2>Book Event {eventId}</h2>
+      <form onSubmit={handleSubmit}>
+        <input name="name" placeholder="Name" onChange={handleChange} />
+        <input name="email" placeholder="Email" onChange={handleChange} />
+        <input name="tickets" type="number" min="1" onChange={handleChange} />
+        <button type="submit">Book Now</button>
+      </form>
     </div>
   );
 }
+
+export default BookingPage;

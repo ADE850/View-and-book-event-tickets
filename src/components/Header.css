@@ -1,15 +1,20 @@
 .header {
-  background-color: #0d47a1;
+  background-color: rgba(13, 71, 161, 0.4); /* стало ещё прозрачнее */
+  backdrop-filter: blur(8px); /* чуть сильнее размытие для баланса */
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 40px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
   font-family: "Segoe UI", sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.logo-link {
+
+.header-left .logo-link {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -37,10 +42,12 @@
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
+  transition: color 0.2s ease;
 }
 
 .nav-links a:hover {
   text-decoration: underline;
+  color: #ffeb3b;
 }
 
 .header-right {
@@ -55,21 +62,24 @@
   color: white;
   cursor: pointer;
   font-weight: bold;
+  transition: color 0.2s ease;
 }
 
 .lang-switch button:hover {
+  color: #ffeb3b;
   text-decoration: underline;
 }
 
 .login-btn {
-  background-color: #1976d2;
+  background-color: rgba(25, 118, 210, 0.9);
   color: white;
   padding: 6px 14px;
   border-radius: 5px;
   text-decoration: none;
   font-weight: 500;
+  transition: background-color 0.2s ease;
 }
 
 .login-btn:hover {
-  background-color: #1565c0;
+  background-color: rgba(21, 101, 192, 1);
 }
